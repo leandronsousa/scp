@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+
+	<h:form id="idFormUsuario">
+		<div class="box">
+			<div class="box-body">
+				<a href="#{request.contextPath}/pessoa" id="btnCadastrar" class="btn btn-primary pull-right">#{resources['label.botoes.cadastrar']}</a>
+				<div class="table-responsive">
+					<h:dataTable value="#{pessoaController.to.pessoas}" var="pessoa" id="listaPessoas" styleClass="table table-striped table-bordered table-hover">
+						<h:column>
+							<f:facet name="header">#{resources['label.global.nome']}</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{resources['label.uc.pessoa.data.nascimento']}</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{resources['label.uc.pessoa.genero']}</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{resources['label.uc.pessoa.naturalidade']}</f:facet>
+						</h:column>
+						<h:column>
+							<f:facet name="header">#{resources['label.uc.pessoa.nacionalidade']}</f:facet>
+						</h:column>
+						<h:column>
+							<h:commandLink action="#{pessoaController.excluir()}" id="btnExcluir" />
+						</h:column>
+					</h:dataTable>
+				</div>
+			</div>
+		</div>
+	</h:form>
+	
+	</ui:define>
+</ui:composition>
