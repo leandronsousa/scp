@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+	<cc:attribute name="idInput" default="idInput" required="true" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="label" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="readonly" default="false" />
+	<cc:attribute name="disabled" default="false" required="false" />
+	<cc:attribute name="onkeypress" required="false" />
+	<cc:attribute name="onkeyup" required="false" />
+	<cc:attribute name="maxlength" required="false" default="100"/>
+	<cc:attribute name="onblur" required="false" />
+	<cc:attribute name="placeholder" />
+	<cc:attribute name="type" default="text"/>
+	<cc:attribute name="showErrorMessage" default="false" required="false" />
+	<cc:editableValueHolder name="input" targets="#{cc.attrs.idInput}" /> <!--converter, validator  -->
+	<cc:clientBehavior name="clientEvent" targets="#{cc.attrs.idInput}" event="blur"/> <!-- ajax -->
+</cc:interface>
+
+<cc:implementation>
+	<h:inputText id="#{cc.attrs.idInput}" value="#{cc.attrs.value}" styleClass="form-control #{component.valid ? '' : 'is-invalid'}" 
+			required="#{cc.attrs.required}" label="#{cc.attrs.label}" onkeypress="#{cc.attrs.onkeypress}" maxlength="#{cc.attrs.maxlength}" onkeyup="#{cc.attrs.onkeyup}" 
+			onblur="#{cc.attrs.onblur}" onfocus="$(this).removeClass('is-invalid')" readonly="#{cc.attrs.readonly}" disabled="#{cc.attrs.disabled}" >
+		<cc:insertChildren />
+		<f:passThroughAttribute name="placeholder" value="#{cc.attrs.placeholder}" />
+		<f:passThroughAttribute name="type" value="#{cc.attrs.type}" />
+		<f:passThroughAttribute name="aria-describedby" value="validationFeedback#{cc.attrs.id}" />
+	</h:inputText>
+	<ui:fragment rendered="#{cc.attrs.showErrorMessage}">
+		<div id="validationFeedback#{cc.attrs.id}" class="invalid-feedback"><h:message for="#{cc.attrs.idInput}" /></div>
+	</ui:fragment>
+
+</cc:implementation>
+
+</html>

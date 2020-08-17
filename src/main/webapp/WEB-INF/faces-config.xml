@@ -9,23 +9,23 @@
 
    <!-- Write your navigation rules here. You should use CDI for creating @Named managed beans! -->
    
-   <!-- <navigation-rule>
-		<from-view-id>/pages/usuario/usuario_form.xhtml</from-view-id>
+   <navigation-rule>
+		<from-view-id>/pages/pessoa/pessoas-list.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>listar</from-outcome>
-			<to-view-id>/pages/usuario/usuario_list.xhtml</to-view-id>
+			<from-outcome>cadastrar</from-outcome>
+			<to-view-id>/pages/pessoa/pessoa-form.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
-		<from-view-id>/pages/usuario/usuario_list.xhtml</from-view-id>
+		<from-view-id>/pages/pessoa/pessoa-form.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>listar</from-outcome>
-			<to-view-id>/pages/usuario/usuario_list.xhtml</to-view-id>
+			<to-view-id>/pages/pessoa/pessoas-list.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
-	</navigation-rule> -->
+	</navigation-rule>
 	
 	<application>
 		<locale-config>

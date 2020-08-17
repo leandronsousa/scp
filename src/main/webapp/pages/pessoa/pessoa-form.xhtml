@@ -3,137 +3,73 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:scp="http://java.sun.com/jsf/composite/components"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
 
-<!-- colocar primefaces -->
-
-	<div class="box-body">
-		<div class="box">
-			<h:form id="idFormPessoa">
-				<div class="box">
-					<div class="box-body">
-						<div class="row">
-		
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>#{resources['label.global.nome']} *</label>
-									<h:inputText value="#{pessoaController.to.pessoa.nome}" required="true" maxlength="250" />
-								</div>
-							</div>
-		
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>#{resources['label.global.email']} *</label>
-									<h:inputText value="#{pessoaController.to.pessoa.email}" required="true" maxlength="100" />
-								</div>
-							</div>
-		
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>#{resources['label.global.celular']} *</label>
-									<h:inputText value="#{pessoaController.to.pessoa.}" required="true" maxlength="100" />
-								</div>
-							</div>
-		
-						</div><!-- end of .row -->
-		
-						<div class="row">
-		
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>#{resources['label.global.telefone']} *</label>
-									<nsa:telefone value="#{usuarioController.to.usuario.telefone}" required="true" label="#{resources['label.global.telefone']}" />
-								</div>
-							</div>
-		
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>#{resources['label.global.ramal']}</label>
-									<nsa:inputText value="#{usuarioController.to.usuario.ramal}" label="#{resources['label.global.ramal']}" maxlength="4" onkeypress="mascara(this,soNumeros)"/>
-								</div>
-							</div>
-		
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>#{resources['label.global.uf']} *</label>
-									<nsa:selectUf value="#{usuarioController.to.usuario.uf}" label="#{resources['label.global.uf']}" required="true" id="idUfUsuario" />
-									
-								</div>
-							</div>
-		
-						</div><!-- end of .row -->
-		
-						<div class="row">
-		
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>#{resources['label.global.login']} *</label>
-									<nsa:inputText value="#{usuarioController.to.usuario.login}" label="#{resources['label.global.login']}" required="true" 
-											classe="classLogin" maxlength="50" onkeypress="mascara(this,retiraEspacos)" id="idLogin">
-										<f:ajax execute="@this" event="clientEvent" render="idMessages @this"/>
-										<f:validator validatorId="loginValidator" for="input"/>
-									</nsa:inputText>
-								</div>
-							</div>
-							
-						</div><!-- end of .row -->
-		
-						<div class="row">
-						
-							<div class="col-sm-6">
-								<div class="form-group">
-									<nsa:senha id="idSenhaUsuario" value="#{usuarioController.to.usuario.senha}" label="#{resources['label.global.senha']}" required="true" />
-								</div>
-							</div>
-		
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label>#{resources['label.global.confirmacaoSenha']} *</label>
-									<nsa:inputSecret id="idSenhaConfirmacao" value="#{usuarioController.to.usuario.senhaConfirmacao}" required="true" redisplay="true" 
-											label="#{resources['label.global.confirmacaoSenha']}" maxlength="40" idSenha="idFormUsuario:idSenhaUsuario:idSenhaUsuario:idInput">
-										<f:ajax execute="@this" event="clientEvent" render="idMessages @this"/>
-										<f:validator validatorId="senhaConfirmacaoValidator" for="input"/>
-									</nsa:inputSecret>
-								</div>
-							</div>
-						</div>
-						
-						
-		
-						<div class="row">
-							<div class="col-sm-4">
-								<div class="form-group">
-									<label>#{resources['label.global.perfis']} *</label>
-									<h:selectManyCheckbox value="#{usuarioController.to.listaPerfil}" styleClass="selectCheckbox" style="width:100%" layout="pageDirection"
-											converter="perfilConverter" label="#{resources['label.global.perfis']}" required="#{not empty param[save.clientId]}" onclick="mostraCarteiraBenef(this.checked, this.value);" >
-										<f:selectItems value="#{combosBean.listaPerfil}" var="perfil" itemValue="#{perfil}" 
-												itemLabel="#{perfil.nome}"/>
-									</h:selectManyCheckbox>
-								</div>
-							</div>
+	<h:form id="idFormPessoa">
+		<div class="card">
+			<h5 class="card-header">Cadastro de Pessoa</h5>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label>#{resources['label.global.nome']}<font color="red">*</font></label>
+							<scp:scpInput id="nomePessoa" placeholder="#{resources['label.global.nome']}" 
+									value="#{pessoaController.to.pessoa.nome}" required="true" maxlength="250" showErrorMessage="true"/>
 						</div>
 					</div>
-					<div class="box-footer with-border">
-						<ul class="list-inline">
-							<li>
-								<a class="btn btn-app" href="#{request.contextPath}/usuario">
-									<i class="fa fa-list"></i> 
-									<h:outputText value="#{resources['label.global.listar']}" />
-								</a>
-							</li>
-							<li>
-								<h:commandLink action="#{usuarioController.incluir()}"	styleClass="btn btn-app" type="button" binding="#{save}">
-									<i class="fa fa-save"></i>
-									<h:outputText value="#{resources['label.global.gravar']}" />
-								</h:commandLink>
-							</li>
-						</ul>
+					
+					<!-- <div class="col-sm-4">
+						<div class="form-group">
+							<label>#{resources['label.uc.pessoa.genero']}<font color="red">*</font></label>
+							<h:inputText class="form-control" value="#{pessoaController.to.pessoa.genero}" required="true" maxlength="250" />
+						</div>
+					</div> -->
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label>#{resources['label.global.email']}<font color="red">*</font></label>
+							<scp:scpInput id="emailPessoa" placeholder="#{resources['label.global.email']}"
+									value="#{pessoaController.to.pessoa.email}" required="true" maxlength="100" />
+						</div>
 					</div>
 				</div>
-			</h:form>
+
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label>#{resources['label.uc.pessoa.cpf']}<font color="red">*</font></label>
+							<scp:cpf value="#{pessoaController.to.pessoa.cpf}" required="true"/>
+						</div>
+					</div>
+					
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label>#{resources['label.uc.pessoa.naturalidade']}*</label>
+							<scp:scpInput id="naturalidadePessoa" placeholder="#{resources['label.uc.pessoa.naturalidade']}" 
+									value="#{pessoaController.to.pessoa.naturalidade}" required="true" maxlength="100" />
+						</div>
+					</div>
+
+					<!-- <div class="col-sm-4">
+						<div class="form-group">
+							<label>#{resources['label.uc.pessoa.nacionalidade']}</label>
+						</div>
+					</div> -->
+				</div>
+			</div>
+			
+			<div class="card-footer">
+				<div class="d-flex justify-content-end">
+					<h:commandLink action="listar" value="#{resources['label.botoes.voltar']}" styleClass="btn btn btn-outline-warning btn-sm" immediate="true"/>
+					<h:commandButton action="#{pessoaController.incluir()}" value="#{resources['label.botoes.gravar']}" styleClass="btn btn btn-outline-success btn-sm" />
+					
+				</div>		
+			</div>
+			
 		</div>
-	</div>
+	</h:form>
 	
 	</ui:define>
 </ui:composition>

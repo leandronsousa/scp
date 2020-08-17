@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PROCESS model-entity="JSFProcess"/>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#pages#pessoa#pessoas-list.xhtml"
+  PATH="/pages/pessoa/pessoas-list.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#pessoa#pessoas-list.xhtml:0"
+   NAME="item" PATH="/pages/pessoa/pessoas-list.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cadastrar::#pages#pessoa#pessoa-form.xhtml"
+    NAME="output" PATH="/pages/pessoa/pessoa-form.xhtml"
+    TARGET="rules:#pages#pessoa#pessoa-form.xhtml" TITLE="cadastrar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#pessoa#pessoa-form.xhtml"
+  PATH="/pages/pessoa/pessoa-form.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#pessoa#pessoa-form.xhtml:0" NAME="item"
+   PATH="/pages/pessoa/pessoa-form.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="listar::#pages#pessoa#pessoas-list.xhtml"
+    NAME="output" PATH="/pages/pessoa/pessoas-list.xhtml"
+    TARGET="rules:#pages#pessoa#pessoas-list.xhtml" TITLE="listar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

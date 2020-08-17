@@ -44,11 +44,11 @@
 		    <version>8.0.1</version>
 		    <scope>provided</scope>
 		</dependency> -->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>javax</groupId>
 		    <artifactId>javaee-api</artifactId>
 		    <version>8.0.1</version>
-		    <!-- <exclusions>
+		    <exclusions>
 		    	<exclusion>
 		    		<groupId>javax.servlet</groupId>
       				<artifactId>javax.servlet-api</artifactId>
@@ -61,15 +61,15 @@
 		    		<groupId>javax.el</groupId>
       				<artifactId>javax.el-api</artifactId>
 		    	</exclusion>
-		    </exclusions> -->
-		</dependency>
+		    </exclusions>
+		</dependency> -->
 		
-		<dependency>
+		<!-- <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency> -->
 		
 		<!-- <dependency>
 		    <groupId>javax.servlet.jsp</groupId>
@@ -106,7 +106,7 @@
 		    <scope>provided</scope>
 		</dependency> -->
 	
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
 			<version>2.2.20</version>
@@ -118,6 +118,19 @@
 			<artifactId>jsf-impl</artifactId>
 			<version>2.2.20</version>
 			<scope>compile</scope>
+		</dependency> -->
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.glassfish</groupId>
+		    <artifactId>javax.faces</artifactId>
+		    <version>2.4.0</version>
 		</dependency>
 		
 		<dependency>
@@ -133,6 +146,12 @@
 		    <scope>provided</scope>
 		</dependency>
 		
+		<dependency>
+		    <groupId>javax.ejb</groupId>
+		    <artifactId>javax.ejb-api</artifactId>
+		    <version>3.2.2</version>
+		</dependency>
+		
 		<!-- <dependency>
 			<groupId>javax.ejb</groupId>
 			<artifactId>javax.ejb-api</artifactId>
@@ -141,7 +160,7 @@
 				
         <dependency>
 		    <groupId>org.jboss.weld.servlet</groupId>
-		    <artifactId>weld-servlet-core</artifactId>
+		    <artifactId>weld-servlet-shaded</artifactId>
 		    <version>3.1.5.Final</version>
 		</dependency>
 				
@@ -162,6 +181,12 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 			<version>2.3.2.RELEASE</version>
 		</dependency> -->
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.4.20.Final</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>com.h2database</groupId>
