@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<cc:interface>
+	<cc:attribute name="id" required="true" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="label" />
+	<cc:attribute name="disabled" default="false" />
+	<cc:attribute name="showErrorMessage" default="true" required="false" />
+	<cc:clientBehavior name="clientEvent" targets="#{cc.attrs.id}" event="valueChange"/>
+	<cc:editableValueHolder name="select" targets="#{cc.attrs.id}" />
+</cc:interface>
+<cc:implementation>
+
+	<h:selectOneMenu id="#{cc.attrs.id}" disabled="#{cc.attrs.disabled}" value="#{cc.attrs.value}" label="#{cc.attrs.label}" required="#{cc.attrs.required}"
+			styleClass="form-control #{component.valid ? '' : 'is-invalid'}" onfocus="$(this).removeClass('is-invalid')">
+		<cc:insertChildren />
+		<f:passThroughAttribute name="aria-describedby" value="validationFeedback#{cc.attrs.id}" />
+	</h:selectOneMenu>
+	<ui:fragment rendered="#{cc.attrs.showErrorMessage}">
+		<div id="validationFeedback#{cc.attrs.id}" class="invalid-feedback"><h:message for="#{cc.attrs.id}" /></div>
+	</ui:fragment>
+
+</cc:implementation>
+</html>

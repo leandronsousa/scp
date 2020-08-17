@@ -2,6 +2,7 @@ package br.com.stefanini.scp.controllers;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
@@ -34,5 +35,15 @@ public class ScpController implements Serializable {
 
 	protected FacesContext getFacesContext() {
 		return FacesContext.getCurrentInstance();
+	}
+	
+	protected void adicionarMensagemInfo(String titulo,String descricao){
+		FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, titulo, descricao);
+		FacesContext.getCurrentInstance().addMessage(null, m);
+	}
+
+	protected void adicionarMensagemErro(String titulo,String descricao){
+		FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, titulo, descricao);
+		FacesContext.getCurrentInstance().addMessage(null, m);
 	}
 }

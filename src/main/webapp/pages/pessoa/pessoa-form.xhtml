@@ -4,10 +4,15 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:scp="http://java.sun.com/jsf/composite/components"
-	template="/WEB-INF/templates/default.xhtml">
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:conv="http://scp.com.br/converters">
 	<ui:define name="content">
 
 	<h:form id="idFormPessoa">
+		<h:messages infoClass="alert alert-success" 
+			errorClass="alert alert-danger" 
+			warnClass="alert alert-warning" 
+			id="idMessages" />
 		<div class="card">
 			<h5 class="card-header">Cadastro de Pessoa</h5>
 			<div class="card-body">
@@ -20,51 +25,66 @@
 						</div>
 					</div>
 					
-					<!-- <div class="col-sm-4">
+					<div class="col-sm-3">
 						<div class="form-group">
-							<label>#{resources['label.uc.pessoa.genero']}<font color="red">*</font></label>
-							<h:inputText class="form-control" value="#{pessoaController.to.pessoa.genero}" required="true" maxlength="250" />
-						</div>
-					</div> -->
-
-					<div class="col-sm-4">
-						<div class="form-group">
-							<label>#{resources['label.global.email']}<font color="red">*</font></label>
-							<scp:scpInput id="emailPessoa" placeholder="#{resources['label.global.email']}"
-									value="#{pessoaController.to.pessoa.email}" required="true" maxlength="100" />
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="form-group">
-							<label>#{resources['label.uc.pessoa.cpf']}<font color="red">*</font></label>
-							<scp:cpf value="#{pessoaController.to.pessoa.cpf}" required="true"/>
+							<label>#{resources['label.uc.pessoa.data.nascimento']}<font color="red">*</font></label>
+							<scp:scpInputDate label="#{resources['label.uc.pessoa.data.nascimento']}"
+									value="#{pessoaController.to.pessoa.dataNascimento}" required="true" />		
 						</div>
 					</div>
 					
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<div class="form-group">
-							<label>#{resources['label.uc.pessoa.naturalidade']}*</label>
-							<scp:scpInput id="naturalidadePessoa" placeholder="#{resources['label.uc.pessoa.naturalidade']}" 
-									value="#{pessoaController.to.pessoa.naturalidade}" required="true" maxlength="100" />
+							<label>#{resources['label.uc.pessoa.genero']}</label>
+							<scp:scpSelect label="#{resources['label.uc.pessoa.genero']}" id="generoPessoa"
+									value="#{pessoaController.to.pessoa.genero}" required="false">
+								<f:converter binding="#{generoFacesConverter}" for="select" />
+								<f:selectItem itemLabel="#{resources['label.global.selecione']}"/>
+								<f:selectItems value="#{combosBean.generos}" var="genero" itemLabel="#{genero.descricao}" itemValue="#{genero}"/>
+							</scp:scpSelect>
 						</div>
 					</div>
 
-					<!-- <div class="col-sm-4">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label>#{resources['label.global.email']}</label>
+							<scp:scpEmail id="emailPessoa" placeholder="#{resources['label.global.email']}"
+									value="#{pessoaController.to.pessoa.email}" required="false" maxlength="80" />
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label>#{resources['label.uc.pessoa.cpf']}<font color="red">*</font></label>
+							<scp:scpCpf value="#{pessoaController.to.pessoa.cpf}" required="true"/>
+						</div>
+					</div>
+					
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label>#{resources['label.uc.pessoa.naturalidade']}</label>
+							<scp:scpInput id="naturalidadePessoa" placeholder="#{resources['label.uc.pessoa.naturalidade']}" 
+									value="#{pessoaController.to.pessoa.naturalidade}" required="false" maxlength="100" />
+						</div>
+					</div>
+
+					<div class="col-sm-3">
 						<div class="form-group">
 							<label>#{resources['label.uc.pessoa.nacionalidade']}</label>
+							<scp:scpSelectNacionalidade id="nacionalidadePessoa" value="#{pessoaController.to.pessoa.nacionalidade}" />
 						</div>
-					</div> -->
+					</div>
 				</div>
 			</div>
 			
 			<div class="card-footer">
 				<div class="d-flex justify-content-end">
-					<h:commandLink action="listar" value="#{resources['label.botoes.voltar']}" styleClass="btn btn btn-outline-warning btn-sm" immediate="true"/>
-					<h:commandButton action="#{pessoaController.incluir()}" value="#{resources['label.botoes.gravar']}" styleClass="btn btn btn-outline-success btn-sm" />
-					
+					<a href="#{request.contextPath}/pessoas" class="btn btn-outline-warning btn-sm" role="button">
+						<h:outputText value="#{resources['label.botoes.voltar']}" />
+					</a>
+					<h:commandButton action="#{pessoaController.salvar()}" value="#{resources['label.botoes.gravar']}" 
+							styleClass="btn btn-outline-success btn-sm">
+					</h:commandButton>
 				</div>		
 			</div>
 			

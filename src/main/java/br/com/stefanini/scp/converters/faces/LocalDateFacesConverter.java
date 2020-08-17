@@ -9,6 +9,7 @@ import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
 import br.com.stefanini.scp.utils.UtilData;
+import br.com.stefanini.scp.utils.UtilData.FormatoData;
 
 @FacesConverter(value = "localDateConverter")
 public class LocalDateFacesConverter implements Converter<LocalDate> {
@@ -22,7 +23,7 @@ public class LocalDateFacesConverter implements Converter<LocalDate> {
 		}
 		LocalDate localDate = null;
 		try {
-			localDate = UtilData.converterStringParaLocalDate(value);
+			localDate = UtilData.converterStringParaLocalDate(value, FormatoData.DATA);
 		} catch (Exception e) {
 			throw new ConverterException();
 		}
@@ -34,7 +35,7 @@ public class LocalDateFacesConverter implements Converter<LocalDate> {
 		if (value != null) {
 			if (value instanceof LocalDate) {
 				try {
-					return UtilData.converterLocalDateParaString((LocalDate) value);
+					return UtilData.converterLocalDateParaString((LocalDate) value, FormatoData.DATA);
 				} catch (Exception e) {
 					throw new ConverterException();
 				}

@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/default.xhtml">
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:conv="http://scp.com.br/converters">
 	<ui:define name="content">
 
 		<div class="card">
@@ -11,7 +12,9 @@
 			<div class="card-body">
 				<h:form id="idFormPessoa">
 					<div class="d-flex justify-content-end">
-						<h:commandLink action="cadastrar" value="Cadastrar" styleClass="btn btn btn-outline-primary btn-sm" />
+						<a href="#{request.contextPath}/pessoas/new" class="btn btn-outline-primary btn-sm" role="button">
+							<h:outputText value="#{resources['label.botoes.cadastrar']}" />
+						</a>
 					</div>
 					<br />
 					<div class="table-responsive">
@@ -19,22 +22,32 @@
 								styleClass="table table-striped table-bordered table-hover">
 							<h:column>
 								<f:facet name="header">#{resources['label.global.nome']}</f:facet>
+								#{pessoa.nome}
 							</h:column>
 							<h:column>
 								<f:facet name="header">#{resources['label.uc.pessoa.data.nascimento']}</f:facet>
+								<h:outputText value="#{pessoa.dataNascimento}" converter="localDateConverter" />
 							</h:column>
 							<h:column>
 								<f:facet name="header">#{resources['label.uc.pessoa.genero']}</f:facet>
+								#{pessoa.genero.descricao}
 							</h:column>
 							<h:column>
 								<f:facet name="header">#{resources['label.uc.pessoa.naturalidade']}</f:facet>
+								#{pessoa.naturalidade}
 							</h:column>
 							<h:column>
 								<f:facet name="header">#{resources['label.uc.pessoa.nacionalidade']}</f:facet>
+								#{pessoa.nacionalidade.nacionalidade}
 							</h:column>
 							<h:column>
-								<h:commandLink action="#{pessoaController.excluir(pessoa.id)}" styleClass="btn btn-primary pull-right" 
-										id="btnExcluir">#{resources['label.botoes.excluir']}</h:commandLink>
+								<h:commandButton styleClass="btn btn-outline-warning btn-sm" 
+										id="btnExcluir" value="#{resources['label.botoes.excluir']}">
+									<f:ajax execute="@this" listener="#{pessoaController.excluir(pessoa.id)}" render="idFormPessoa" />
+								</h:commandButton>
+								<a href="#{request.contextPath}/pessoas/edit/#{pessoa.id}" class="btn btn-outline-primary btn-sm" role="button">
+									<h:outputText value="#{resources['label.botoes.editar']}" />
+								</a>
 							</h:column>
 						</h:dataTable>
 					</div>

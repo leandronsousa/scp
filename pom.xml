@@ -12,114 +12,9 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!-- 		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
- -->
 	</properties>
 
-	<!-- <repositories>
-		<repository>
-			<id>repository.jboss.org</id>
-			<name>JBoss Repository</name>
-			<url>http://repository.jboss.org/maven2</url>
-		</repository>
-	</repositories> -->
-
-	<!-- <dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.weld</groupId>
-				<artifactId>weld-extensions-bom</artifactId>
-				<version>${weld.extensions.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement> -->
-
 	<dependencies>
-		<!-- <dependency>
-		    <groupId>javax</groupId>
-		    <artifactId>javaee-web-api</artifactId>
-		    <version>8.0.1</version>
-		    <scope>provided</scope>
-		</dependency> -->
-		<!-- <dependency>
-		    <groupId>javax</groupId>
-		    <artifactId>javaee-api</artifactId>
-		    <version>8.0.1</version>
-		    <exclusions>
-		    	<exclusion>
-		    		<groupId>javax.servlet</groupId>
-      				<artifactId>javax.servlet-api</artifactId>
-		    	</exclusion>
-		    	<exclusion>
-			    	<groupId>javax.servlet.jsp</groupId>
-	      			<artifactId>javax.servlet.jsp-api</artifactId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<groupId>javax.el</groupId>
-      				<artifactId>javax.el-api</artifactId>
-		    	</exclusion>
-		    </exclusions>
-		</dependency> -->
-		
-		<!-- <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-            <scope>provided</scope>
-        </dependency> -->
-		
-		<!-- <dependency>
-		    <groupId>javax.servlet.jsp</groupId>
-		    <artifactId>javax.servlet.jsp-api</artifactId>
-		    <version>2.2.1</version>
-		    <scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-		    <groupId>javax.el</groupId>
-		    <artifactId>javax.el-api</artifactId>
-		    <version>2.2.3</version>
-		    <scope>provided</scope>
-		</dependency> -->
-		
-		<!-- <dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>servlet-api</artifactId>
-		    <version>2.5</version>
-		    <scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-		    <groupId>javax.servlet.jsp</groupId>
-		    <artifactId>jsp-api</artifactId>
-		    <version>2.2</version>
-		    <scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-		    <groupId>javax.el</groupId>
-		    <artifactId>el-api</artifactId>
-		    <version>2.2</version>
-		    <scope>provided</scope>
-		</dependency> -->
-	
-		<!-- <dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.2.20</version>
-			<scope>compile</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>2.2.20</version>
-			<scope>compile</scope>
-		</dependency> -->
-		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -134,11 +29,11 @@
 		</dependency>
 		
 		<dependency>
-		    <groupId>org.primefaces</groupId>
-		    <artifactId>primefaces</artifactId>
-		    <version>6.1</version>
+		    <groupId>org.glassfish.web</groupId>
+		    <artifactId>el-impl</artifactId>
+		    <version>2.2</version>
 		</dependency>
-		
+
 		<dependency>
 		    <groupId>javax.enterprise</groupId>
 		    <artifactId>cdi-api</artifactId>
@@ -151,41 +46,24 @@
 		    <artifactId>javax.ejb-api</artifactId>
 		    <version>3.2.2</version>
 		</dependency>
-		
-		<!-- <dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<version>3.2.2</version>
-		</dependency> -->
 				
         <dependency>
 		    <groupId>org.jboss.weld.servlet</groupId>
 		    <artifactId>weld-servlet-shaded</artifactId>
 		    <version>3.1.5.Final</version>
 		</dependency>
-				
-		<!-- <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>5.2.8.RELEASE</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-jpa</artifactId>
-		    <version>2.3.3.RELEASE</version>
-		</dependency> -->
-
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>2.3.2.RELEASE</version>
-		</dependency> -->
 		
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>5.4.20.Final</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.hibernate.javax.persistence</groupId>
+		    <artifactId>hibernate-jpa-2.1-api</artifactId>
+		    <version>1.0.2.Final</version>
+		    <scope>provided</scope>
 		</dependency>
 		
 		<dependency>
@@ -200,67 +78,50 @@
 			<version>3.11</version>
 		</dependency>
 
-		<!-- Common to JEE and Servlet containers -->
-		<!-- <dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>jsr250-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		JSF 2.0 API
-		<dependency>
-			<groupId>javax.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-		</dependency> -->
-
-
-		<!-- Jetty/Tomcat-specific scopes and artifacts -->
-
-		<!-- JSF 2.0 -->
-		<!-- <dependency>
-			<groupId>javax.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<scope>runtime</scope>
-		</dependency> -->
-
-		<!-- <dependency>
-			<groupId>org.jboss.weld.servlet</groupId>
-			<artifactId>weld-servlet</artifactId>
-			<scope>runtime</scope>
-		</dependency> -->
-
-		<!-- <dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>el-impl</artifactId>
-			<scope>runtime</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.el</groupId>
-					<artifactId>el-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency> -->
-
-		<!-- Bean Validation API (JSR 303) -->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>2.0.1.Final</version>
 		</dependency>
 
-		<!-- Bean Validation Implementation -->
-		<!-- Provides portable constraints such as @NotEmpty, @Email and @Url -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.0.0.GA</version>
+			<version>6.1.5.Final</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.13</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-core</artifactId>
+		    <version>3.5.0</version>
+		    <scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-servlet</artifactId>
+			<version>2.0.12.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-config-prettyfaces</artifactId>
+			<version>2.0.12.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-integration-faces</artifactId>
+			<version>2.0.12.Final</version>
+		</dependency>
+				
 	</dependencies>
 
 	<build>
@@ -275,17 +136,6 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
-			<!--Eclipse plugin - download source and JavaDoc jars automatically
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<configuration>
-					<wtpversion>2.0</wtpversion>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-				</configuration>
-			</plugin> -->
 
 			<!-- Embedded Jetty (jetty:run) -->
 			<!-- <plugin>
@@ -317,16 +167,6 @@
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
-				<configuration>
-					<path>/${project.build.finalName}</path>
-					<port>9090</port>
-					<url>http://localhost:8080/manager</url>
-				</configuration>
-			</plugin> -->
-			
-			<!-- <plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
 					<path>/${project.build.finalName}</path>
 					<port>9090</port>

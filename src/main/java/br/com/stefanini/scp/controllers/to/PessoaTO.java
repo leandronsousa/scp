@@ -1,10 +1,13 @@
 package br.com.stefanini.scp.controllers.to;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.com.stefanini.scp.entidades.Pessoa;
 
-public class PessoaTO {
+public class PessoaTO implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Pessoa pessoa;
 	

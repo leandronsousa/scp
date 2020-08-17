@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.validator.constraints.Email;
-
 /**
  * Entidade Pessoa
  * 
@@ -30,15 +28,11 @@ public class Pessoa extends EntidadeGenerica {
 	@Column(nullable = false)
 	private String nome;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Genero genero;
 	
-	@Email
 	private String email;
 	
-	@Column(nullable = false)
-	private String login;
-
 	private String senha;
 	
 	@Column(nullable = false)
@@ -72,14 +66,6 @@ public class Pessoa extends EntidadeGenerica {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
 	}
 
 	public String getSenha() {

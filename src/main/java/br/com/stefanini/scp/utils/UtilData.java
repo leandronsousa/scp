@@ -9,17 +9,17 @@ public class UtilData {
 	private UtilData() {
 	}
 	
-	public static LocalDate converterStringParaLocalDate(String str) {
+	public static LocalDate converterStringParaLocalDate(String str, FormatoData formato) {
 		if (str != null) {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FormatoData.DATA.getFormato());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formato.getFormato());
 			return LocalDate.parse(str, formatter);
 		}
 		return null;
 	}
 	
-	public static String converterLocalDateParaString(LocalDate localDate) {
+	public static String converterLocalDateParaString(LocalDate localDate, FormatoData formato) {
 		if (localDate != null) {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FormatoData.DATA.getFormato());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formato.getFormato());
 			return localDate.format(formatter);
 		}
 		return null;
@@ -28,7 +28,7 @@ public class UtilData {
 	public enum FormatoData {
 		DATA_HORA_MIN_SEG("dd/MM/yyyy HH:mm:ss"),
 		DATA("dd/MM/yyyy"),
-		DATA_INTER("yyyy-MM-dd"),
+		DATA_INTERNACIONAL("yyyy-MM-dd"),
 		DATA_INTER_HORA("yyyy-MM-dd HH:mm"),
 		DATA_HORA_MIN("dd/MM/yyyy HH:mm"),
 		HORA_MINUTO_SEGUNDO("HH:mm:ss"),

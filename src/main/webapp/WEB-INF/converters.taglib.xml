@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd">
 
-    <namespace>scp/converters</namespace>
+    <namespace>http://scp.com.br/converters</namespace>
 
     <tag>
         <tag-name>localDateConverter</tag-name>
