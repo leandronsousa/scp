@@ -219,6 +219,7 @@ public class PessoaService {
 
 	private void prepararPessoaParaAlterar(Pessoa pessoa) {
 		pessoa.setCpf(RegExUtils.removePattern(pessoa.getCpf(), "[^0-9]"));
+		pessoa.setDataHoraAtualizacao(LocalDateTime.now());
 	}
 
 }
