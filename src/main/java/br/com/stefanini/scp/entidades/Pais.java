@@ -3,6 +3,11 @@ package br.com.stefanini.scp.entidades;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * Entidade Pais
+ * 
+ * @author leandro
+ */
 @Entity
 public class Pais extends EntidadeGenerica {
 	

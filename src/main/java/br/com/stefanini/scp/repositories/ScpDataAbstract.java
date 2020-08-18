@@ -9,10 +9,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Query;
 import javax.validation.ConstraintViolationException;
 
+/**
+ * @author leandro
+ *
+ * @param <T>
+ */
 public abstract class ScpDataAbstract<T> extends DataAbstract	 {
 
 	/**
-	 * {@inheritDoc}
+	 * alterar registro
+	 * 
+	 * @param entity
+	 * @throws Exception
 	 */
 	public void alterar(T entity) throws Exception {
 		iniciarTransacao();
@@ -22,8 +30,11 @@ public abstract class ScpDataAbstract<T> extends DataAbstract	 {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 * @return 
+	 * incluir novo registro
+	 * 
+	 * @param entity
+	 * @return
+	 * @throws Exception
 	 */
 	public T incluir(T entity) throws Exception {
 		try {
@@ -46,7 +57,9 @@ public abstract class ScpDataAbstract<T> extends DataAbstract	 {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * LIstar entidade
+	 * 
+	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<T> listar() {
@@ -72,7 +85,11 @@ public abstract class ScpDataAbstract<T> extends DataAbstract	 {
 	}
 	
 	/**
-	 * {@inheritDoc}
+	 * Recuperar Entidade
+	 * 
+	 * @param id
+	 * @return
+	 * @throws Exception
 	 */
 	@SuppressWarnings("unchecked")
 	public T recuperar(Serializable id) throws Exception{

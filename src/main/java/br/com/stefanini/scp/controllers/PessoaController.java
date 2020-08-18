@@ -10,6 +10,10 @@ import br.com.stefanini.scp.enums.Mensagens;
 import br.com.stefanini.scp.exceptions.ScpNegocioException;
 import br.com.stefanini.scp.services.PessoaService;
 
+/**
+ * Acoes de pessoa na view
+ * @author leandro
+ */
 @Model
 public class PessoaController extends ScpController {
 

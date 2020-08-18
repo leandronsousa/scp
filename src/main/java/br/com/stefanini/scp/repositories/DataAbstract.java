@@ -8,39 +8,58 @@ import org.hibernate.internal.SessionImpl;
 
 import br.com.stefanini.scp.EMF;
 
+/**
+ * @author leandro
+ *
+ */
 public abstract class DataAbstract {
 	
 	private final EntityManager manager = EMF.createEntityManager();
 
 	/**
-	 * Retorna o(a) manager.
+	 * Prove o objeto entityManager para as classes que herdam
 	 * 
-	 * @return EntityManager
+	 * @return
 	 */
 	protected EntityManager getManager() {
 		return this.manager;
 	}
+
 	/**
-	 * Retorna o(a) Criteria Builder.
+	 * Prove o objeto criteriaBuilder
 	 * 
-	 * @return EntityManager
+	 * @return
 	 */
 	protected CriteriaBuilder getCriteriaBuilder() {
 		return this.manager.getCriteriaBuilder();
 	}
 	
+	/**
+	 * iniciar uma transacao quando nao gerenciada pelo container
+	 */
 	protected void iniciarTransacao() {
 		getManager().getTransaction().begin();
 	}
 	
+	/**
+	 * commit na transacao quando nao gerenciada pelo container
+	 */
 	protected void commitTransacao() {
 		getManager().getTransaction().commit();
 	}
 	
+	/**
+ 	 * rollback na transacao quando nao gerenciada pelo container
+	 */
 	protected void rollbackTransacao() {
 		getManager().getTransaction().rollback();
 	}
-
+	
+	/**
+	 * Prove a sessao da transacao
+	 * 
+	 * @return
+	 */
 	protected Session getSession() {
 		return getManager().unwrap(SessionImpl.class);
 	}

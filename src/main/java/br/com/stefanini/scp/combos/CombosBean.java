@@ -9,6 +9,11 @@ import br.com.stefanini.scp.entidades.Genero;
 import br.com.stefanini.scp.entidades.Pais;
 import br.com.stefanini.scp.services.PessoaService;
 
+/**
+ * Combos para view
+ * 
+ * @author leandro
+ */
 @Named
 public class CombosBean {
 

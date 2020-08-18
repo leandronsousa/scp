@@ -3,6 +3,10 @@ package br.com.stefanini.scp.infra;
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 import com.ocpsoft.pretty.faces.annotation.URLMappings;
 
+/**
+ * @author leandro
+ *
+ */
 @URLMappings(mappings = {
 		@URLMapping(id = "index", pattern = "/index", viewId = "/index.jsf"),
 		@URLMapping(id = "home", pattern = "/home", viewId = "/home.jsf"),

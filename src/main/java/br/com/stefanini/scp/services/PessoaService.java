@@ -18,12 +18,25 @@ import br.com.stefanini.scp.exceptions.ScpNegocioException;
 import br.com.stefanini.scp.repositories.PessoaDAO;
 import br.com.stefanini.scp.utils.UtilValidadorCpf;
 
+/**
+ * Negocio de pessoa
+ * 
+ * @author leandro
+ *
+ */
 @Stateless
 public class PessoaService {
 	
 	@Inject
 	private PessoaDAO dao;
 
+	/**
+	 * Inclui Pessoa
+	 * 
+	 * @param pessoa
+	 * @return
+	 * @throws ScpNegocioException
+	 */
 	public Pessoa incluir(Pessoa pessoa) throws ScpNegocioException {
 		try {
 			prepararPessoaParaIncluir(pessoa);
@@ -38,6 +51,103 @@ public class PessoaService {
 		}
 	}
 
+	/**
+	 * Verifica se CPF ja esta cadastrado
+	 * 
+	 * @param cpf
+	 * @return
+	 */
+	public boolean isCpfCadastrado(String cpf) {
+		return dao.isCpfCadastrado(cpf);
+	}
+	
+	/**
+	 * Consulta todos os paises
+	 * 
+	 * @return
+	 */
+	public List<Pais> consultarPaises() {
+		return dao.consultarPaises();
+	}
+	
+	/**
+	 * Consulta todos os generos
+	 * 
+	 * @return
+	 */
+	public List<Genero> consultarGeneros() {
+		return dao.consultarGeneros();
+	}
+
+	/**
+	 * Consulta genero por id
+	 * 
+	 * @param codigo
+	 * @return
+	 */
+	public Genero consultarGenero(Integer codigo) {
+		return dao.consultarGenero(codigo);
+	}
+	
+	/**
+	 * Consulta Pais por sigla
+	 * 
+	 * @param sigla
+	 * @return
+	 */
+	public Pais consultarPais(String sigla) {
+		return dao.consultarPais(sigla);
+	}
+
+	/**
+	 * Consulta Pessoa por ID
+	 * 
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public Pessoa consultarPessoa(Long id) throws Exception {
+		return dao.recuperar(id);
+	}
+
+	/**
+	 * Consulta todas as pessoas
+	 * 
+	 * @return
+	 */
+	public List<Pessoa> consultarPessoas() {
+		return dao.listar();
+	}
+
+	/**
+	 * Exclui pessoa por ID
+	 * 
+	 * @param idPessoa
+	 */
+	public void excluir(Long idPessoa) {
+		dao.excluir(idPessoa);
+	}
+	
+	/**
+	 * Altera pessoa
+	 * 
+	 * @param pessoa
+	 * @throws ScpNegocioException
+	 */
+	public void alterar(Pessoa pessoa) throws ScpNegocioException {
+		try {
+			prepararPessoaParaAlterar(pessoa);
+			validarAlteracaoPessoa(pessoa);
+			dao.alterar(pessoa);
+		} catch (ScpNegocioException e) {
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ScpNegocioException(Mensagens.MSG_PESSOA_ERRO_CADASTRAR.getTexto());
+		}
+	}
+	
 	private void validarCadastroPessoa(Pessoa pessoa) throws ScpNegocioException {
 		validarNomePessoa(pessoa.getNome());
 		validarDataNascimentoPessoa(pessoa.getDataNascimento());
@@ -68,10 +178,6 @@ public class PessoaService {
 		}
 	}
 
-	public boolean isCpfCadastrado(String cpf) {
-		return dao.isCpfCadastrado(cpf);
-	}
-
 	private void validarDataNascimentoPessoa(LocalDate dataNascimento) throws ScpNegocioException {
 		validarDataNascimentoPreenchida(dataNascimento);
 		validarDataNascimentoMaiorDataAtual(dataNascimento);
@@ -98,48 +204,6 @@ public class PessoaService {
 	private void prepararPessoaParaIncluir(final Pessoa pessoa) {
 		pessoa.setDataHoraCadastro(LocalDateTime.now());
 		pessoa.setCpf(RegExUtils.removePattern(pessoa.getCpf(), "[^0-9]"));
-	}
-
-	public List<Pais> consultarPaises() {
-		return dao.consultarPaises();
-	}
-	
-	public List<Genero> consultarGeneros() {
-		return dao.consultarGeneros();
-	}
-
-	public Genero consultarGenero(Integer codigo) {
-		return dao.consultarGenero(codigo);
-	}
-	
-	public Pais consultarPais(String sigla) {
-		return dao.consultarPais(sigla);
-	}
-
-	public Pessoa consultarPessoa(Long id) throws Exception {
-		return dao.recuperar(id);
-	}
-
-	public List<Pessoa> consultarPessoas() {
-		return dao.listar();
-	}
-
-	public void excluir(Long idPessoa) {
-		dao.excluir(idPessoa);
-	}
-	
-	public void alterar(Pessoa pessoa) throws ScpNegocioException {
-		try {
-			prepararPessoaParaAlterar(pessoa);
-			validarAlteracaoPessoa(pessoa);
-			dao.alterar(pessoa);
-		} catch (ScpNegocioException e) {
-			e.printStackTrace();
-			throw e;
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new ScpNegocioException(Mensagens.MSG_PESSOA_ERRO_CADASTRAR.getTexto());
-		}
 	}
 
 	private void validarAlteracaoPessoa(Pessoa pessoa) throws ScpNegocioException {

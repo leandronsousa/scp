@@ -12,6 +12,11 @@ import org.apache.commons.lang3.StringUtils;
 import br.com.stefanini.scp.enums.Mensagens;
 import br.com.stefanini.scp.utils.UtilValidadorCpf;
 
+/**
+ * Valida cpf na view
+ * 
+ * @author leandro
+ */
 @FacesValidator(value = "cpfValidator")
 public class CpfValidator implements Validator<String> {
 	

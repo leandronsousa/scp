@@ -40,11 +40,11 @@ public class Pessoa extends EntidadeGenerica {
 	
 	private String naturalidade;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "SIGLA_PAIS")
 	private Pais nacionalidade;
 	
-	@Column(nullable = false, updatable = false)
+	@Column(nullable = false)
 	private String cpf;
 	
 	@Column(nullable = false, updatable = false)

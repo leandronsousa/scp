@@ -14,6 +14,11 @@ import org.apache.commons.lang3.StringUtils;
 
 import br.com.stefanini.scp.enums.Mensagens;
 
+/**
+ * Valida email na view
+ * 
+ * @author leandro
+ */
 @FacesValidator(value = "emailValidator")
 public class EmailValidator implements Validator<String> {
 	

@@ -11,6 +11,11 @@ import javax.faces.convert.FacesConverter;
 import br.com.stefanini.scp.utils.UtilData;
 import br.com.stefanini.scp.utils.UtilData.FormatoData;
 
+/**
+ *  * conversor de {@link LocalDate} para faces
+ * 
+ * @author leandro
+ */
 @FacesConverter(value = "localDateConverter")
 public class LocalDateFacesConverter implements Converter<LocalDate> {
 

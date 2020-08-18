@@ -1,5 +1,11 @@
 package br.com.stefanini.scp.utils;
 
+/**
+ * Classe utilitaria para validar cpf
+ * 
+ * @author leandro
+ *
+ */
 public class UtilValidadorCpf {
 
 	private UtilValidadorCpf() {

@@ -21,6 +21,12 @@ import br.com.stefanini.scp.enums.Mensagens;
 import br.com.stefanini.scp.exceptions.ScpNegocioException;
 import br.com.stefanini.scp.repositories.PessoaDAO;
 
+/**
+ * Class para testar regra de negocio de pessoa
+ * 
+ * @author leandro
+ *
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class PessoaServiceTest {
 

@@ -11,6 +11,11 @@ import org.apache.commons.lang3.StringUtils;
 import br.com.stefanini.scp.entidades.Genero;
 import br.com.stefanini.scp.services.PessoaService;
 
+/**
+ * Conversor de genero para faces
+ * 
+ * @author leandro
+ */
 @Named
 public class GeneroFacesConverter implements Converter<Genero> {
 	

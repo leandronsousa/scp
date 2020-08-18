@@ -5,6 +5,12 @@ import java.util.List;
 
 import br.com.stefanini.scp.entidades.Pessoa;
 
+/**
+ * CLasse para transitar objetos entre view e controller
+ * 
+ * @author leandro
+ *
+ */
 public class PessoaTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;

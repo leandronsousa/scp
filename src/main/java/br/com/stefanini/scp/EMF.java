@@ -7,6 +7,10 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+/**
+ * Controi e destroi o manager factory da aplicacao
+ * @author leandro
+ */
 @WebListener
 public class EMF implements ServletContextListener {
 	

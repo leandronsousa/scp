@@ -11,6 +11,11 @@ import org.apache.commons.lang3.StringUtils;
 import br.com.stefanini.scp.entidades.Pais;
 import br.com.stefanini.scp.services.PessoaService;
 
+/**
+ * conversor de nacionalidade para faces
+ * 
+ * @author leandro
+ */
 @Named
 public class NacionalidadeFacesConverter implements Converter<Pais> {
 	

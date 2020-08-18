@@ -9,6 +9,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author leandro
+ *
+ */
 public class ScpController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
