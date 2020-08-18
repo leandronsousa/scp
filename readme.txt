@@ -28,7 +28,7 @@
   
   Exemplo:
   
-    server>
+    <server>
 		<id>TomcatServer</id>
 		<username>admin</username>
 		<password>admin</password>
