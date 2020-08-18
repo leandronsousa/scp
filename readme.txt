@@ -1,17 +1,13 @@
  Requisitos
- =========================
+ =================================
  
  - Tomcat 9
  - Java 8
  
   
  Deploy da aplicação
- =========================
+ =================================
 
-  Com o Tomcat sendo rodando. 
-  Dentro da pasta do projeto. Executar o comando:
- 
-  mvn clean install tomcat7:deploy
   
   *O usuário do tomcat deve ter a role: manager-script habilitada no arquivo tomcat-users.xml
   
@@ -33,12 +29,17 @@
 		<username>admin</username>
 		<password>admin</password>
 	</server>
+	
+  Com o Tomcat sendo rodando. 
+  Dentro da pasta do projeto. Executar o comando:
+ 
+  mvn clean install tomcat7:deploy
 
   *Aplicação ira rodar na URL: http://localhost:8080/scp
 
 
 Deploy da aplicação standalone
- ================================
+=================================
 
   Dentro da pasta do projeto. Executar o comando:
 
